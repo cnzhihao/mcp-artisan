@@ -3,15 +3,16 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 // Import tools
 import { saveHtml, saveHtmlSchema } from "./tools/saveHtml.js";
 import { renderImageFromHtml, renderImageFromHtmlSchema } from "./tools/renderImageFromHtml.js";
-import { findRelevantPrompt, findRelevantPromptSchema } from "./tools/findRelevantPrompt.js";
+import { listPrompts, listPromptsSchema } from "./tools/listPrompts.js";
+import { getPromptContent, getPromptContentSchema } from "./tools/getPromptContent.js";
 export function createMcpServer() {
     const server = new McpServer({
         name: "mcp-artisan",
         version: "1.0.0"
     });
-    // Register findRelevantPrompt tool
-    server.tool("findRelevantPrompt", findRelevantPromptSchema.shape, async (args) => {
-        const result = await findRelevantPrompt(args);
+    // Register listPrompts tool
+    server.tool("listPrompts", listPromptsSchema.shape, async (args) => {
+        const result = await listPrompts(args);
         if (result.isError) {
             return {
                 content: result.content,
@@ -19,12 +20,20 @@ export function createMcpServer() {
             };
         }
         return {
-            content: [{
-                    type: "text",
-                    text: JSON.stringify({
-                        promptPath: result._meta?.promptPath
-                    })
-                }]
+            content: result.content
+        };
+    });
+    // Register getPromptContent tool
+    server.tool("getPromptContent", getPromptContentSchema.shape, async (args) => {
+        const result = await getPromptContent(args);
+        if (result.isError) {
+            return {
+                content: result.content,
+                isError: true
+            };
+        }
+        return {
+            content: result.content
         };
     });
     // Register saveHtml tool

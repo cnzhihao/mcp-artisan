@@ -4,11 +4,12 @@ A Model Context Protocol (MCP) tool for AI Agents to find prompts, save HTML, an
 
 ## Overview
 
-MCP-Artisan is a command-line tool built on the Model Context Protocol that provides three essential tools for AI Agents:
+MCP-Artisan is a command-line tool built on the Model Context Protocol that provides four essential tools for AI Agents:
 
-1. **findRelevantPrompt** - Search for the most relevant prompt file based on user input
-2. **saveHtml** - Save HTML content to a file
-3. **renderImageFromHtml** - Render HTML files as images using Puppeteer
+1. **listPrompts** - List all available prompt files in a directory
+2. **getPromptContent** - Read the content of a specific prompt file
+3. **saveHtml** - Save HTML content to a file
+4. **renderImageFromHtml** - Render HTML files as images using Puppeteer
 
 ## Installation
 
@@ -25,17 +26,25 @@ npx mcp-artisan
 
 ## Tools
 
-### findRelevantPrompt
+### listPrompts
 
-Searches a directory of prompt files and returns the most relevant match based on semantic similarity.
+Lists all available prompt files in a specified directory.
 
 **Parameters:**
-- `userInput` (string, required): Keywords or description to match against
 - `promptsPath` (string, required): Absolute path to the prompts directory
 
 **Supported file extensions:** `.txt`, `.md`, `.prompt`, `.text`
 
-**Returns:** Path to the most matching prompt file
+**Returns:** JSON object containing an array of available prompt filenames
+
+### getPromptContent
+
+Reads and returns the content of a specific prompt file.
+
+**Parameters:**
+- `promptPath` (string, required): Absolute path to the target prompt file
+
+**Returns:** Raw text content of the prompt file
 
 ### saveHtml
 
@@ -62,18 +71,27 @@ Renders an HTML file as an image using Puppeteer.
 
 Here's how an AI Agent would typically use MCP-Artisan:
 
-1. **Find a relevant prompt:**
+1. **List available prompts:**
    ```json
    {
-     "tool": "findRelevantPrompt",
+     "tool": "listPrompts",
      "arguments": {
-       "userInput": "cyberpunk cat illustration",
        "promptsPath": "/path/to/prompts"
      }
    }
    ```
 
-2. **Save generated HTML:**
+2. **Get content of a chosen prompt file:**
+   ```json
+   {
+     "tool": "getPromptContent",
+     "arguments": {
+       "promptPath": "/path/to/prompts/cyberpunk-cat-style.txt"
+     }
+   }
+   ```
+
+3. **Save generated HTML:**
    ```json
    {
      "tool": "saveHtml",
@@ -85,7 +103,7 @@ Here's how an AI Agent would typically use MCP-Artisan:
    }
    ```
 
-3. **Render HTML to image:**
+4. **Render HTML to image:**
    ```json
    {
      "tool": "renderImageFromHtml",
