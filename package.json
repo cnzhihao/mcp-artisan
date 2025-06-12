@@ -1,0 +1,36 @@
+{
+  "name": "mcp-artisan",
+  "version": "1.0.0",
+  "description": "A Model Context Protocol tool for AI Agents to find prompts, save HTML, and render HTML to images",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "mcp-artisan": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["mcp", "model-context-protocol", "ai", "html", "puppeteer", "prompts"],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist/**/*",
+    "README.md"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "puppeteer": "^23.10.4",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}
