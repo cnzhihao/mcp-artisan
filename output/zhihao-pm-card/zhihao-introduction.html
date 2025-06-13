@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智昊 - 产品经理 & AI实践者</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans SC', 'Tahoma', 'Arial', sans-serif;
+        }
+        .serif-font {
+            font-family: 'Noto Serif SC', serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .ai-gradient {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            background-size: 300% 300%;
+            animation: gradientShift 8s ease infinite;
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .tech-pattern {
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .skill-tag {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .skill-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        .skill-tag:hover::before {
+            left: 100%;
+        }
+        .floating-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .pulse-dot {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            margin: 1rem 0;
+        }
+        .value-card {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+        .collaboration-section {
+            background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+            border-left: 4px solid #4ecdc4;
+        }
+        .seeking-section {
+            background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+            border-left: 4px solid #ff6b6b;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-4">
+    <div class="w-full max-w-sm mx-auto gradient-bg tech-pattern rounded-2xl shadow-2xl overflow-hidden text-white relative">
+        
+        <!-- 顶部装饰线 -->
+        <div class="ai-gradient h-1 w-full"></div>
+        
+        <!-- 主要内容区域 -->
+        <div class="p-6 space-y-6">
+            
+            <!-- 个人信息头部 -->
+            <div class="text-center relative">
+                <div class="absolute top-0 right-0 floating-icon">
+                    <i class="fas fa-robot text-2xl text-yellow-300 opacity-70"></i>
+                </div>
+                <div class="mb-3">
+                    <h1 class="serif-font text-3xl font-bold mb-1">智昊</h1>
+                    <div class="flex items-center justify-center space-x-2 text-sm opacity-90">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>杭州</span>
+                        <span class="pulse-dot w-2 h-2 bg-green-400 rounded-full"></span>
+                    </div>
+                </div>
+                
+                <!-- 核心身份标签 -->
+                <div class="flex flex-wrap justify-center gap-2 mb-4">
+                    <span class="skill-tag bg-white bg-opacity-20 px-3 py-1 rounded-full text-xs font-medium">
+                        <i class="fas fa-cogs mr-1"></i>SaaS产品经理
+                    </span>
+                    <span class="skill-tag bg-white bg-opacity-20 px-3 py-1 rounded-full text-xs font-medium">
+                        <i class="fas fa-brain mr-1"></i>AI实践者
+                    </span>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- 核心价值主张 -->
+            <div class="value-card rounded-xl p-4">
+                <div class="text-center mb-3">
+                    <i class="fas fa-star text-yellow-300 text-lg mb-2"></i>
+                    <h3 class="font-semibold text-sm">核心价值</h3>
+                </div>
+                <p class="text-xs leading-relaxed text-center opacity-95">
+                    专注企业软件的SaaS产品经理，已独立开发上线<span class="font-bold text-yellow-300">3款AI产品</span>，
+                    为企业提供AI提效培训与自动化工作流搭建服务
+                </p>
+            </div>
+
+            <!-- 专业领域 -->
+            <div>
+                <h3 class="font-semibold text-sm mb-3 flex items-center">
+                    <i class="fas fa-lightbulb mr-2 text-yellow-300"></i>
+                    专业领域
+                </h3>
+                <div class="expertise-grid text-xs">
+                    <div class="skill-tag bg-white bg-opacity-10 p-2 rounded-lg">
+                        <i class="fas fa-building text-blue-300 mb-1"></i>
+                        <div class="font-medium">企业SaaS</div>
+                        <div class="opacity-80 text-xs">业务财务·资金管理·采购协同</div>
+                    </div>
+                    <div class="skill-tag bg-white bg-opacity-10 p-2 rounded-lg">
+                        <i class="fas fa-rocket text-green-300 mb-1"></i>
+                        <div class="font-medium">AI产品开发</div>
+                        <div class="opacity-80 text-xs">从0到1独立构建</div>
+                    </div>
+                    <div class="skill-tag bg-white bg-opacity-10 p-2 rounded-lg">
+                        <i class="fas fa-chalkboard-teacher text-purple-300 mb-1"></i>
+                        <div class="font-medium">AI提效培训</div>
+                        <div class="opacity-80 text-xs">DeepSeek·Office-AI</div>
+                    </div>
+                    <div class="skill-tag bg-white bg-opacity-10 p-2 rounded-lg">
+                        <i class="fas fa-cog text-orange-300 mb-1"></i>
+                        <div class="font-medium">工作流自动化</div>
+                        <div class="opacity-80 text-xs">Dify·Coze·n8n</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- 我能提供 -->
+            <div class="collaboration-section rounded-xl p-4">
+                <h3 class="font-semibold text-sm mb-3 flex items-center">
+                    <i class="fas fa-hands-helping mr-2 text-green-300"></i>
+                    我能提供
+                </h3>
+                <div class="space-y-2 text-xs">
+                    <div class="flex items-start space-x-2">
+                        <i class="fas fa-check-circle text-green-300 mt-0.5 flex-shrink-0"></i>
+                        <span>AI自动化工作流搭建方法 (基于n8n实战经验)</span>
+                    </div>
+                    <div class="flex items-start space-x-2">
+                        <i class="fas fa-check-circle text-green-300 mt-0.5 flex-shrink-0"></i>
+                        <span>SaaS与AI结合的产品规划与商业化思路</span>
+                    </div>
+                    <div class="flex items-start space-x-2">
+                        <i class="fas fa-check-circle text-green-300 mt-0.5 flex-shrink-0"></i>
+                        <span>AI辅助编程的培训与实践指导</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 我希望获得 -->
+            <div class="seeking-section rounded-xl p-4">
+                <h3 class="font-semibold text-sm mb-3 flex items-center">
+                    <i class="fas fa-search mr-2 text-red-300"></i>
+                    寻求合作
+                </h3>
+                <div class="space-y-2 text-xs">
+                    <div class="flex items-start space-x-2">
+                        <i class="fas fa-globe text-red-300 mt-0.5 flex-shrink-0"></i>
+                        <span>AI出海建站与SEO增长的系统方法</span>
+                    </div>
+                    <div class="flex items-start space-x-2">
+                        <i class="fas fa-handshake text-red-300 mt-0.5 flex-shrink-0"></i>
+                        <span>AI培训领域的合作机会与资源对接</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 底部装饰 -->
+            <div class="text-center pt-2">
+                <div class="ai-gradient h-0.5 w-20 mx-auto rounded-full"></div>
+                <p class="text-xs opacity-70 mt-2 serif-font">让AI赋能每一个创新想法</p>
+            </div>
+        </div>
+        
+        <!-- 底部装饰线 -->
+        <div class="ai-gradient h-1 w-full"></div>
+    </div>
+</body>
+</html>

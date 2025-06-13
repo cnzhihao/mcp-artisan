@@ -1,38 +1,52 @@
 import { readdir, stat } from 'fs/promises';
-import { extname } from 'path';
+import { join, extname } from 'path';
 import { z } from 'zod';
+import { validatePath } from '../utils/path.js';
 
-export const listPromptsSchema = z.object({
-  promptsPath: z.string()
-});
+export const listPromptsSchema = z.object({});
 
 export type ListPromptsArgs = z.infer<typeof listPromptsSchema>;
 
-export async function listPrompts(args: ListPromptsArgs) {
+export async function listPrompts(args: ListPromptsArgs, workspacePath: string) {
   try {
-    // Check if prompts directory exists
-    const promptsStats = await stat(args.promptsPath);
-    if (!promptsStats.isDirectory()) {
-      throw new Error(`Prompts path is not a directory: ${args.promptsPath}`);
-    }
-
-    // Read all files in the prompts directory
-    const files = await readdir(args.promptsPath);
+    const supportedExtensions = ['.txt', '.md', '.prompt', '.text'];
+    let searchPath = workspacePath;
     
-    // Filter for text files (common prompt file extensions)
+    // 优先检查prompts目录
+    const promptsDir = join(workspacePath, 'prompts');
+    try {
+      const promptsStats = await stat(promptsDir);
+      if (promptsStats.isDirectory()) {
+        searchPath = promptsDir;
+      }
+    } catch {
+      // prompts目录不存在，使用工作空间根目录
+    }
+    
+    // 验证搜索路径安全性
+    const validatedPath = await validatePath(searchPath, workspacePath);
+    
+    // 读取目录内容
+    const files = await readdir(validatedPath);
+    
+    // 过滤提示词文件
     const promptFiles = files.filter(file => {
       const ext = extname(file).toLowerCase();
-      return ['.txt', '.md', '.prompt', '.text'].includes(ext);
+      return supportedExtensions.includes(ext);
     });
 
     return {
       content: [{
         type: "text" as const,
-        text: JSON.stringify({ fileList: promptFiles })
+        text: JSON.stringify({ 
+          fileList: promptFiles,
+          searchPath: searchPath === promptsDir ? 'prompts/' : './'
+        })
       }],
       _meta: {
         fileList: promptFiles,
-        promptsPath: args.promptsPath
+        searchPath,
+        workspacePath
       }
     };
 

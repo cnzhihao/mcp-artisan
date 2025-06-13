@@ -1,9 +1,10 @@
 {
     "mcpServers": {
       "my-artisan-tool": {
-        "command": "/opt/homebrew/bin/node",
+        "command": "node",
         "args": [
-          "/Users/cnzhihao/github/mcp-artisan/dist/index.js"
+          "D:\\github\\mcp-artisan\\dist\\index.js",
+          "D:\\github\\mcp-artisan"
         ]
       }
     }

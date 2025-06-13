@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智昊 - 产品经理 & AI实践者</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+        }
+        .serif-font {
+            font-family: 'Noto Serif SC', 'SimSun', serif;
+        }
+        .main-gradient {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #3b82f6 100%);
+        }
+        .accent-gradient {
+            background: linear-gradient(90deg, #10b981, #06b6d4, #3b82f6);
+        }
+        .card-shadow {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1);
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .icon-glow {
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+        }
+        .section-bg {
+            background: rgba(255, 255, 255, 0.1);
+            border-left: 4px solid;
+        }
+        .provide-section {
+            border-left-color: #10b981;
+        }
+        .seek-section {
+            border-left-color: #f59e0b;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 p-6">
+    <div class="w-full max-w-sm mx-auto main-gradient rounded-3xl card-shadow overflow-hidden text-white">
+        
+        <!-- 顶部装饰条 -->
+        <div class="accent-gradient h-2 w-full"></div>
+        
+        <!-- 主要内容 -->
+        <div class="p-8 space-y-8">
+            
+            <!-- 个人信息头部 -->
+            <div class="text-center">
+                <div class="relative mb-6">
+                    <h1 class="serif-font text-4xl font-bold mb-2 text-shadow">智昊</h1>
+                    <div class="flex items-center justify-center space-x-3 text-base opacity-90">
+                        <i class="fas fa-map-marker-alt icon-glow"></i>
+                        <span class="font-medium">杭州</span>
+                        <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                    </div>
+                </div>
+                
+                <!-- 核心身份 -->
+                <div class="space-y-3">
+                    <div class="glass-effect px-4 py-2 rounded-full inline-block">
+                        <span class="text-base font-semibold">
+                            <i class="fas fa-cogs mr-2 text-blue-300"></i>SaaS产品经理
+                        </span>
+                    </div>
+                    <div class="glass-effect px-4 py-2 rounded-full inline-block">
+                        <span class="text-base font-semibold">
+                            <i class="fas fa-robot mr-2 text-green-300"></i>AI实践者
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 核心成就 -->
+            <div class="glass-effect rounded-2xl p-6 text-center">
+                <div class="mb-4">
+                    <i class="fas fa-trophy text-3xl text-yellow-300 icon-glow"></i>
+                </div>
+                <h3 class="text-lg font-bold mb-3 text-shadow">核心成就</h3>
+                <p class="text-base leading-relaxed">
+                    专注企业软件的产品经理<br/>
+                    独立开发上线 <span class="text-yellow-300 font-bold text-xl">3款AI产品</span><br/>
+                    为企业提供AI提效培训与自动化服务
+                </p>
+            </div>
+
+            <!-- 专业领域 -->
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-center text-shadow">
+                    <i class="fas fa-lightbulb mr-2 text-yellow-300 icon-glow"></i>
+                    专业领域
+                </h3>
+                <div class="grid grid-cols-1 gap-4">
+                    <div class="glass-effect p-4 rounded-xl">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-building text-2xl text-blue-300 mr-3 icon-glow"></i>
+                            <span class="font-bold text-base">企业SaaS解决方案</span>
+                        </div>
+                        <p class="text-sm opacity-90 ml-8">业务财务 · 资金管理 · 采购协同</p>
+                    </div>
+                    
+                    <div class="glass-effect p-4 rounded-xl">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-rocket text-2xl text-green-300 mr-3 icon-glow"></i>
+                            <span class="font-bold text-base">AI产品开发与落地</span>
+                        </div>
+                        <p class="text-sm opacity-90 ml-8">从0到1独立构建AI应用</p>
+                    </div>
+                    
+                    <div class="glass-effect p-4 rounded-xl">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-chalkboard-teacher text-2xl text-purple-300 mr-3 icon-glow"></i>
+                            <span class="font-bold text-base">AI提效培训</span>
+                        </div>
+                        <p class="text-sm opacity-90 ml-8">DeepSeek · Office-AI工具应用</p>
+                    </div>
+                    
+                    <div class="glass-effect p-4 rounded-xl">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-cogs text-2xl text-orange-300 mr-3 icon-glow"></i>
+                            <span class="font-bold text-base">AI工作流自动化</span>
+                        </div>
+                        <p class="text-sm opacity-90 ml-8">Dify · Coze · n8n平台实战</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 我能提供 -->
+            <div class="section-bg provide-section rounded-xl p-5">
+                <h3 class="text-lg font-bold mb-4 flex items-center text-shadow">
+                    <i class="fas fa-hands-helping mr-2 text-green-300 icon-glow"></i>
+                    我能提供什么
+                </h3>
+                <div class="space-y-3">
+                    <div class="flex items-start space-x-3">
+                        <i class="fas fa-check-circle text-green-300 mt-1 icon-glow"></i>
+                        <span class="text-sm leading-relaxed">AI自动化工作流搭建方法<br/>
+                        <span class="opacity-80">(基于n8n的实战经验与自研方法论)</span></span>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="fas fa-check-circle text-green-300 mt-1 icon-glow"></i>
+                        <span class="text-sm leading-relaxed">SaaS与AI结合的产品规划<br/>
+                        <span class="opacity-80">与商业化思路</span></span>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="fas fa-check-circle text-green-300 mt-1 icon-glow"></i>
+                        <span class="text-sm leading-relaxed">AI辅助编程的培训与实践<br/>
+                        <span class="opacity-80">(用AI学习和进行编程)</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 寻求合作 -->
+            <div class="section-bg seek-section rounded-xl p-5">
+                <h3 class="text-lg font-bold mb-4 flex items-center text-shadow">
+                    <i class="fas fa-handshake mr-2 text-yellow-300 icon-glow"></i>
+                    希望获得什么
+                </h3>
+                <div class="space-y-3">
+                    <div class="flex items-start space-x-3">
+                        <i class="fas fa-globe text-yellow-300 mt-1 icon-glow"></i>
+                        <span class="text-sm leading-relaxed">AI出海建站与SEO增长的<br/>
+                        <span class="opacity-80">系统方法与实战经验</span></span>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="fas fa-users text-yellow-300 mt-1 icon-glow"></i>
+                        <span class="text-sm leading-relaxed">AI培训领域的合作机会<br/>
+                        <span class="opacity-80">与优质需求资源对接</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 底部标语 -->
+            <div class="text-center pt-4">
+                <div class="accent-gradient h-1 w-24 mx-auto rounded-full mb-3"></div>
+                <p class="text-base serif-font font-medium text-shadow opacity-90">
+                    让AI赋能每一个创新想法
+                </p>
+            </div>
+        </div>
+        
+        <!-- 底部装饰条 -->
+        <div class="accent-gradient h-2 w-full"></div>
+    </div>
+</body>
+</html>

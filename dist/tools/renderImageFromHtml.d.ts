@@ -10,13 +10,16 @@ export declare const renderImageFromHtmlSchema: z.ZodObject<{
     imageType?: "png" | "jpeg" | undefined;
 }>;
 export type RenderImageFromHtmlArgs = z.infer<typeof renderImageFromHtmlSchema>;
-export declare function renderImageFromHtml(args: RenderImageFromHtmlArgs): Promise<{
+export declare function renderImageFromHtml(args: RenderImageFromHtmlArgs, workspacePath: string): Promise<{
     content: {
         type: "text";
         text: string;
     }[];
     _meta: {
         imagePath: string;
+        htmlPath: string;
+        imageType: "png" | "jpeg";
+        workspacePath: string;
     };
     isError?: undefined;
 } | {

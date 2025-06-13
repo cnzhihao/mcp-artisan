@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智昊的自我介绍卡片</title>
+    <!-- TailwindCSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans SC', 'Noto Serif SC', 'Tahoma', 'Arial', 'Roboto', sans-serif;
+            background-color: #f8fafc; /* Light gray background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .card-container {
+            width: 375px; /* Strict width constraint */
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 0 10px -5px rgba(0, 0, 0, 0.04);
+            padding: 24px;
+            text-align: left;
+            overflow: hidden; /* Ensure no scrolling */
+            border: 1px solid #e2e8f0;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            margin-bottom: 15px;
+            font-size: 1.125rem; /* text-lg */
+            font-weight: 700; /* font-bold */
+            color: #334155; /* slate-700 */
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 8px;
+        }
+        .section-title i {
+            margin-right: 10px;
+            color: #64748b; /* slate-500 */
+        }
+        p, ul {
+            color: #475569; /* slate-600 */
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        ul li {
+            padding-left: 28px;
+            position: relative;
+            margin-bottom: 8px;
+        }
+        ul li::before {
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            content: "\f00c"; /* check icon */
+            position: absolute;
+            left: 0;
+            color: #10b981; /* emerald-500 */
+            font-size: 0.9em;
+            top: 4px;
+        }
+        .info-item {
+            margin-bottom: 8px;
+        }
+        .info-label {
+            font-weight: 600; /* font-semibold */
+            color: #1e293b; /* slate-800 */
+        }
+        .highlight {
+            color: #4f46e5; /* indigo-600 */
+            font-weight: 700;
+        }
+        .header {
+            font-size: 1.5rem; /* text-2xl */
+            font-weight: 800; /* extra-bold */
+            color: #1a202c; /* dark gray */
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px dashed #cbd5e1; /* slate-300 */
+            font-size: 0.875rem; /* text-sm */
+            color: #64748b; /* slate-500 */
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <h1 class="header">智昊的自我介绍卡片</h1>
+
+        <div class="info-item">
+            <span class="info-label">微信昵称:</span> <span class="highlight">智昊</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">所在地区:</span> <span class="highlight">杭州</span>
+        </div>
+
+        <div class="section-title">
+            <i class="fas fa-user-circle"></i> <span>自我介绍</span>
+        </div>
+        <p>主业<span class="highlight">SaaS产品经理</span>，专注于企业软件。同时也是AI应用实践者，已独立开发上线<span class="highlight">3款AI产品</span>，并为企业提供AI提效培训与自动化工作流搭建服务。</p>
+
+        <div class="section-title">
+            <i class="fas fa-lightbulb"></i> <span>擅长领域</span>
+        </div>
+        <ul>
+            <li>企业SaaS解决方案：聚焦业务财务、资金管理、采购协同。</li>
+            <li>AI产品开发与落地：从0到1独立构建AI应用。</li>
+            <li>AI提效培训：帮助企业团队掌握DeepSeek、Office-AI等工具提升工作效率。</li>
+            <li>AI工作流自动化：运用Dify/Coze/n8n等平台，实现如合同预审、财报处理等业务自动化（可API调用）。</li>
+        </ul>
+
+        <div class="section-title">
+            <i class="fas fa-handshake"></i> <span>我可以给其他AI传术师提供什么</span>
+        </div>
+        <ul>
+            <li>AI自动化工作流搭建方法 (基于n8n的实战经验与自研方法论)。</li>
+            <li>SaaS与AI结合的产品规划与商业化思路。</li>
+            <li>AI辅助编程的培训与实践 (用AI学习和进行编程)。</li>
+        </ul>
+
+        <div class="section-title">
+            <i class="fas fa-gem"></i> <span>我希望其他AI传术师提供什么</span>
+        </div>
+        <ul>
+            <li>AI出海建站与SEO增长的系统方法和实战经验。</li>
+            <li>AI培训领域的合作机会与优质需求资源对接。</li>
+        </ul>
+
+        <div class="footer">
+            期待与您深度交流，共同探索AI未来！
+        </div>
+    </div>
+</body>
+</html>

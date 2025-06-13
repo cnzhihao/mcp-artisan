@@ -1,137 +1,104 @@
-# MCP-Artisan
+# MCP-Artisan v2.0.0
 
-A Model Context Protocol (MCP) tool for AI Agents to find prompts, save HTML, and render HTML to images.
+A **secure** Model Context Protocol (MCP) tool with workspace sandbox for AI Agents to find prompts, save HTML, and render HTML to images.
 
-## Overview
+## 🚨 Breaking Changes in v2.0.0
 
-MCP-Artisan is a command-line tool built on the Model Context Protocol that provides four essential tools for AI Agents:
+This is a **major version update** with breaking changes. All API parameters have been redesigned for enhanced security and usability.
 
-1. **listPrompts** - List all available prompt files in a directory
-2. **getPromptContent** - Read the content of a specific prompt file
-3. **saveHtml** - Save HTML content to a file
-4. **renderImageFromHtml** - Render HTML files as images using Puppeteer
+### Key Changes:
+- **Workspace Sandbox**: All operations are now restricted to a specified workspace directory
+- **Simplified APIs**: Removed complex path parameters, added intelligent file discovery
+- **Enhanced Security**: Built-in path validation prevents directory traversal attacks
+- **Smart Organization**: Automatic file organization in `output/` subdirectories
 
-## Installation
-
-Install and run directly with npx:
+## Installation & Usage
 
 ```bash
-npx mcp-artisan
+# Install and run with workspace
+npx mcp-artisan /path/to/your/workspace
+
+# Example
+npx mcp-artisan ./my-project
 ```
 
-## System Requirements
+**Required**: You must specify a workspace directory when starting the server.
 
-- Node.js 18 or higher
-- Compatible with Linux, macOS, and Windows
-
-## Tools
+## New API Reference
 
 ### listPrompts
+Lists available prompt files automatically.
+- **Parameters**: None
+- **Behavior**: Searches in `workspace/prompts/` first, falls back to workspace root
+- **Returns**: Array of prompt filenames
 
-Lists all available prompt files in a specified directory.
-
-**Parameters:**
-- `promptsPath` (string, required): Absolute path to the prompts directory
-
-**Supported file extensions:** `.txt`, `.md`, `.prompt`, `.text`
-
-**Returns:** JSON object containing an array of available prompt filenames
-
-### getPromptContent
-
-Reads and returns the content of a specific prompt file.
-
-**Parameters:**
-- `promptPath` (string, required): Absolute path to the target prompt file
-
-**Returns:** Raw text content of the prompt file
+### getPromptContent  
+Reads prompt file content by filename.
+- **Parameters**: 
+  - `promptFileName` (string): Just the filename, no path needed
+- **Behavior**: Automatically searches in prompts directory and workspace root
 
 ### saveHtml
-
-Saves HTML content to a specified file location.
-
-**Parameters:**
-- `htmlContent` (string, required): Complete HTML code to save
-- `outputPath` (string, required): Directory where the file should be saved
-- `fileName` (string, required): Filename (without .html extension)
-
-**Returns:** Absolute path to the saved HTML file
+Saves HTML with automatic organization.
+- **Parameters**:
+  - `htmlContent` (string): Complete HTML content
+  - `subfolderName` (string, max 20 chars): Descriptive folder name  
+  - `fileName` (string): Filename without .html extension
+- **Output**: Saves to `workspace/output/{subfolderName}/{fileName}.html`
 
 ### renderImageFromHtml
+Renders HTML to image using relative paths.
+- **Parameters**:
+  - `htmlPath` (string): Relative path from workspace (e.g., "output/my-card/index.html")
+  - `imageType` (optional): 'png' or 'jpeg'
+- **Output**: Image saved alongside HTML file
 
-Renders an HTML file as an image using Puppeteer.
+## Migration from v1.x
 
-**Parameters:**
-- `htmlPath` (string, required): Absolute path to the HTML file
-- `imageType` (string, optional): Image format - 'png' or 'jpeg' (default: 'png')
+| v1.x Parameter | v2.x Parameter | Notes |
+|---|---|---|
+| `promptsPath` | *(removed)* | Auto-discovery in workspace |
+| `promptPath` | `promptFileName` | Just filename, no path |
+| `outputPath` | `subfolderName` | Auto-organized in output/ |
+| `htmlPath` (absolute) | `htmlPath` (relative) | Relative to workspace |
 
-**Returns:** Absolute path to the generated image file
+## Security Features
 
-## Usage Example
+- **Workspace Sandbox**: All file operations restricted to workspace
+- **Path Validation**: Prevents directory traversal (../) attacks  
+- **Input Sanitization**: Validates filenames and folder names
+- **Symlink Protection**: Resolves real paths to prevent escapes
 
-Here's how an AI Agent would typically use MCP-Artisan:
+## Example Workflow
 
-1. **List available prompts:**
-   ```json
-   {
-     "tool": "listPrompts",
-     "arguments": {
-       "promptsPath": "/path/to/prompts"
-     }
-   }
-   ```
+```bash
+# Start server with workspace
+npx mcp-artisan ./my-project
 
-2. **Get content of a chosen prompt file:**
-   ```json
-   {
-     "tool": "getPromptContent",
-     "arguments": {
-       "promptPath": "/path/to/prompts/cyberpunk-cat-style.txt"
-     }
-   }
-   ```
-
-3. **Save generated HTML:**
-   ```json
-   {
-     "tool": "saveHtml",
-     "arguments": {
-       "htmlContent": "<html><body><h1>Cyberpunk Cat</h1></body></html>",
-       "outputPath": "/path/to/output",
-       "fileName": "cyberpunk-cat"
-     }
-   }
-   ```
-
-4. **Render HTML to image:**
-   ```json
-   {
-     "tool": "renderImageFromHtml",
-     "arguments": {
-       "htmlPath": "/path/to/output/cyberpunk-cat.html",
-       "imageType": "png"
-     }
-   }
-   ```
-
-## Communication Protocol
-
-MCP-Artisan communicates via standard input/output using JSON-RPC. All logging and error messages are sent to stderr to avoid interfering with the protocol communication on stdout.
+# Directory structure will be:
+# my-project/
+# ├── prompts/           # Your prompt files
+# │   ├── card.txt
+# │   └── banner.md
+# └── output/            # Generated files
+#     └── my-cards/      # Organized by subfolder
+#         ├── card.html
+#         └── card.png
+```
 
 ## Development
 
-To build from source:
-
 ```bash
-git clone <repository-url>
+# Clone and install
+git clone <repo>
 cd mcp-artisan
 npm install
-npm run build
-```
 
-To run in development mode:
-```bash
-npm run dev
+# Build
+npm run build
+
+# Development with workspace
+npm run dev -- ./test-workspace
 ```
 
 ## License

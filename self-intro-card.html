@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智昊的自我介绍</title>
+    <style>
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f0f2f5 0%, #e0e6ed 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .card-container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 700px;
+            width: 100%;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+        }
+        .card-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
+        }
+        .card-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        }
+        h1 {
+            color: #333333;
+            font-size: 2.2em;
+            margin-top: 20px;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        h1 .emoji {
+            font-size: 1.5em;
+        }
+        h2 {
+            color: #555555;
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 20px;
+        }
+        h2::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #764ba2;
+            font-size: 1.2em;
+            top: 0;
+        }
+        p, ul {
+            color: #666666;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        ul li {
+            margin-bottom: 8px;
+            padding-left: 25px;
+            position: relative;
+        }
+        ul li::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+            font-size: 0.9em;
+            top: 4px;
+        }
+        .contact-info {
+            margin-top: 30px;
+            border-top: 1px dashed #e0e0e0;
+            padding-top: 20px;
+            text-align: center;
+        }
+        .contact-info p {
+            font-size: 0.95em;
+            color: #888888;
+        }
+        .highlight {
+            color: #764ba2;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <h1><span class="emoji">👋</span> 智昊的自我介绍</h1>
+        
+        <p><strong>【微信昵称】</strong><span class="highlight">智昊</span></p>
+        <p><strong>【所在地区】</strong><span class="highlight">杭州</span></p>
+        
+        <h2><span class="emoji">🚀</span> 自我介绍</h2>
+        <p>主业<span class="highlight">SaaS产品经理</span>，专注于企业软件。同时也是AI应用实践者，已独立开发上线<span class="highlight">3款AI产品</span>，并为企业提供AI提效培训与自动化工作流搭建服务。</p>
+        
+        <h2><span class="emoji">💡</span> 擅长领域</h2>
+        <ul>
+            <li>企业SaaS解决方案：聚焦业务财务、资金管理、采购协同。</li>
+            <li>AI产品开发与落地：从0到1独立构建AI应用。</li>
+            <li>AI提效培训：帮助企业团队掌握DeepSeek、Office-AI等工具提升工作效率。</li>
+            <li>AI工作流自动化：运用Dify/Coze/n8n等平台，实现如合同预审、财报处理等业务自动化（可API调用）。</li>
+        </ul>
+        
+        <h2><span class="emoji">🤝</span> 我可以给其他AI传术师提供什么</h2>
+        <ul>
+            <li>AI自动化工作流搭建方法 (基于n8n的实战经验与自研方法论)。</li>
+            <li>SaaS与AI结合的产品规划与商业化思路。</li>
+            <li>AI辅助编程的培训与实践 (用AI学习和进行编程)。</li>
+        </ul>
+        
+        <h2><span class="emoji">✨</span> 我希望其他AI传术师提供什么</h2>
+        <ul>
+            <li>AI出海建站与SEO增长的系统方法与实战经验。</li>
+            <li>AI培训领域的合作机会与优质需求资源对接。</li>
+        </ul>
+        
+        <div class="contact-info">
+            <p>期待与您交流！</p>
+        </div>
+    </div>
+</body>
+</html>
