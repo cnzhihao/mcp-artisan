@@ -24,6 +24,41 @@ npx mcp-artisan ./my-project
 
 **Required**: You must specify a workspace directory when starting the server.
 
+## Configuration for AI Environments (Cursor, etc.)
+
+To use MCP-Artisan with AI development environments like Cursor, you need to configure the MCP server command.
+
+1.  **Install MCP-Artisan globally or within your project:**
+    ```bash
+    # Global installation
+    npm install -g mcp-artisan
+
+    # Or local project installation
+    npm install mcp-artisan
+    ```
+
+2.  In your environment's MCP server settings (e.g., in `.cursor-agent/mcp.json` or a similar configuration file), set up the server command as follows:
+
+    * **Command**: `npx`
+    * **Arguments**: `["mcp-artisan", "/path/to/your/project/workspace"]`
+
+    Replace `/path/to/your/project/workspace` with the **absolute path** to the folder you want the AI to work in. This folder will be used to find prompts and save output files.
+
+    **Example Configuration (`.cursor-agent/mcp.json`):**
+    ```json
+    {
+      "mcpServers": {
+        "my-artisan-tool": {
+          "command": "npx",
+          "args": [
+            "mcp-artisan",
+            "/Users/username/my-ai-project"
+          ]
+        }
+      }
+    }
+    ```
+
 ## New API Reference
 
 ### listPrompts
@@ -108,3 +143,4 @@ MIT
 ## Contributing
 
 Issues and pull requests are welcome. Please ensure all tests pass before submitting. 
+```
