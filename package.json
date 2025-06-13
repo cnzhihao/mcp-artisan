@@ -1,6 +1,6 @@
 {
   "name": "mcp-artisan",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A secure Model Context Protocol tool with workspace sandbox for AI Agents to find prompts, save HTML, and render HTML to images",
   "type": "module",
   "main": "dist/index.js",
@@ -13,7 +13,16 @@
     "prepublishOnly": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["mcp", "model-context-protocol", "ai", "html", "puppeteer", "prompts", "sandbox", "security"],
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "ai",
+    "html",
+    "puppeteer",
+    "prompts",
+    "sandbox",
+    "security"
+  ],
   "author": "ZhiHao",
   "license": "MIT",
   "repository": {
