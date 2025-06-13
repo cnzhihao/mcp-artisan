@@ -46,7 +46,7 @@ export async function renderImageFromHtml(args: RenderImageFromHtmlArgs, workspa
     // 生成图片路径（与HTML文件在同一目录）
     const htmlDir = dirname(validatedHtmlPath);
     const htmlBasename = basename(validatedHtmlPath, extname(validatedHtmlPath));
-    const imageExtension = imageType === 'jpeg' ? 'jpg' : 'png';
+    const imageExtension = imageType === 'jpeg' ? 'jpeg' : 'png';
     const imagePath = join(htmlDir, `${htmlBasename}.${imageExtension}`);
     
     // 验证图片路径安全性

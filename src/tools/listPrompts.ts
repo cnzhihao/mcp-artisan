@@ -15,7 +15,8 @@ export async function listPrompts(args: ListPromptsArgs, workspacePath: string) 
     // 优先检查prompts目录
     const promptsDir = join(workspacePath, 'prompts');
     try {
-      const promptsStats = await stat(promptsDir);
+      const safePromptsDir = await validatePath(promptsDir, workspacePath);
+      const promptsStats   = await stat(safePromptsDir);
       if (promptsStats.isDirectory()) {
         searchPath = promptsDir;
       }

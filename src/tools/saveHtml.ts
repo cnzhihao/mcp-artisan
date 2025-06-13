@@ -5,8 +5,10 @@ import { validatePath } from '../utils/path.js';
 
 export const saveHtmlSchema = z.object({
   htmlContent: z.string().describe("完整的HTML内容"),
-  subfolderName: z.string().max(20).describe("输出子文件夹名称（最大20字符）"),
-  fileName: z.string().describe("文件名（不含.html扩展名）")
+  subfolderName: z.string().nonempty().max(20)
+    .describe("输出子文件夹名称（最大20字符，不能为空）"),
+  fileName: z.string().nonempty()
+    .describe("文件名（不含.html扩展名，不能为空）")
 });
 
 export type SaveHtmlArgs = z.infer<typeof saveHtmlSchema>;
