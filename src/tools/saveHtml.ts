@@ -1,5 +1,5 @@
 import { writeFile, mkdir } from 'fs/promises';
-import { join } from 'path';
+import { join, relative } from 'path';
 import { z } from 'zod';
 import { validatePath } from '../utils/path.js';
 
@@ -47,13 +47,17 @@ export async function saveHtml(args: SaveHtmlArgs, workspacePath: string) {
     // 写入HTML内容
     await writeFile(validatedFilePath, htmlContent, 'utf8');
 
+    // 计算相对路径
+    const relativeFilePath = relative(workspacePath, validatedFilePath);
+
     return {
       content: [{
         type: "text" as const,
-        text: `HTML saved successfully to: ${filePath}`
+        text: `HTML saved successfully to: ${relativeFilePath}`
       }],
       _meta: {
-        filePath: validatedFilePath,
+        absolutePath: validatedFilePath,
+        relativePath: relativeFilePath,
         subfolderName,
         fileName: fullFileName,
         workspacePath

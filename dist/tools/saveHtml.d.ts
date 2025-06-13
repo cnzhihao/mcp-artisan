@@ -19,7 +19,8 @@ export declare function saveHtml(args: SaveHtmlArgs, workspacePath: string): Pro
         text: string;
     }[];
     _meta: {
-        filePath: string;
+        absolutePath: string;
+        relativePath: string;
         subfolderName: string;
         fileName: string;
         workspacePath: string;

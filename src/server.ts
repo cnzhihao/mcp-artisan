@@ -65,7 +65,7 @@ export function createMcpServer(workspacePath: string) {
         content: [{
           type: "text",
           text: JSON.stringify({
-            filePath: result._meta?.filePath
+            htmlPath: result._meta?.relativePath
           })
         }]
       };
