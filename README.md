@@ -51,6 +51,7 @@ To use MCP-Artisan with AI development environments like Cursor, you need to con
         "my-artisan-tool": {
           "command": "npx",
           "args": [
+            "-y",
             "mcp-artisan",
             "/Users/username/my-ai-project"
           ]
