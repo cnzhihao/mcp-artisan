@@ -3,7 +3,9 @@ import { join, extname } from 'path';
 import { z } from 'zod';
 import { validatePath } from '../utils/path.js';
 
-export const listPromptsSchema = z.object({});
+export const listPromptsSchema = z.object({}).describe(
+  "Lists all available design prompt files in the workspace. This is the best first step to discover creative ideas or templates before generating content. The output is a list of filenames that can be used with the 'getPromptContent' tool."
+);
 
 export type ListPromptsArgs = z.infer<typeof listPromptsSchema>;
 

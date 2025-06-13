@@ -4,8 +4,10 @@ import { z } from 'zod';
 import { validatePath } from '../utils/path.js';
 
 export const getPromptContentSchema = z.object({
-  promptFileName: z.string().describe("提示词文件名（不含路径）")
-});
+  promptFileName: z.string().describe("The exact filename of the prompt, e.g., 'self-introduction.txt'. You can discover available filenames by using the 'listPrompts' tool first.")
+}).describe(
+  "Reads the full content of a specific prompt file. Use this tool after 'listPrompts' to get the actual text of a chosen prompt. The returned content should then be used as a basis for generating new HTML content."
+);
 
 export type GetPromptContentArgs = z.infer<typeof getPromptContentSchema>;
 

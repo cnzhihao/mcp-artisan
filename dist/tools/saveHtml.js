@@ -3,12 +3,12 @@ import { join } from 'path';
 import { z } from 'zod';
 import { validatePath } from '../utils/path.js';
 export const saveHtmlSchema = z.object({
-    htmlContent: z.string().describe("完整的HTML内容"),
+    htmlContent: z.string().describe("The complete, valid HTML content string to be saved."),
     subfolderName: z.string().nonempty().max(20)
-        .describe("输出子文件夹名称（最大20字符，不能为空）"),
+        .describe("A descriptive, URL-safe name for the output subfolder (e.g., 'profile-cards', 'weekly-reports'). This helps organize files."),
     fileName: z.string().nonempty()
-        .describe("文件名（不含.html扩展名，不能为空）")
-});
+        .describe("The base name for the file, without the .html extension (e.g., 'self-intro-v2', 'report-2025-06').")
+}).describe("Saves a string of HTML content to a file in the workspace's 'output' directory. It returns the relative path of the saved file, which is required for the 'renderImageFromHtml' tool.");
 export async function saveHtml(args, workspacePath) {
     try {
         const { htmlContent, subfolderName, fileName } = args;

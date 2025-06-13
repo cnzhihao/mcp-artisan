@@ -4,9 +4,9 @@ import { join, dirname, basename, extname } from 'path';
 import { z } from 'zod';
 import { validatePath } from '../utils/path.js';
 export const renderImageFromHtmlSchema = z.object({
-    htmlPath: z.string().describe("HTML文件的相对路径（相对于工作空间）"),
-    imageType: z.enum(['png', 'jpeg']).default('png').describe("图片格式")
-});
+    htmlPath: z.string().describe("The relative path to the HTML file within the workspace, e.g., 'output/profile-cards/self-intro-v2.html'. This path is obtained from the output of the 'saveHtml' tool."),
+    imageType: z.enum(['png', 'jpeg']).default('png').describe("The desired output image format. Defaults to 'png'.")
+}).describe("Renders an existing HTML file into an image (PNG or JPEG). Use this tool after you have successfully saved an HTML file with 'saveHtml'.");
 export async function renderImageFromHtml(args, workspacePath) {
     let browser;
     try {
