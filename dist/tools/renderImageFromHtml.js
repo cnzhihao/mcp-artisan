@@ -11,38 +11,60 @@ export async function renderImageFromHtml(args, workspacePath) {
     let browser;
     try {
         const { htmlPath, imageType } = args;
-        // 构建完整的HTML文件路径
         const fullHtmlPath = join(workspacePath, htmlPath);
-        // 验证HTML文件路径安全性
         const validatedHtmlPath = await validatePath(fullHtmlPath, workspacePath);
-        // 读取HTML文件内容
         const htmlContent = await readFile(validatedHtmlPath, 'utf8');
-        // 启动浏览器
         browser = await puppeteer.launch({
             headless: true,
             args: ['--no-sandbox', '--disable-setuid-sandbox']
         });
         const page = await browser.newPage();
-        // 设置视口大小
-        await page.setViewport({ width: 1200, height: 800 });
-        // 设置内容并等待加载
+        // 步骤1: 在一个足够大的临时视口中加载，让所有样式生效
+        await page.setViewport({ width: 1920, height: 1080, deviceScaleFactor: 2 });
         await page.setContent(htmlContent, {
-            waitUntil: ['networkidle0', 'domcontentloaded'],
+            waitUntil: 'networkidle0',
             timeout: 10000
         });
-        // 生成图片路径（与HTML文件在同一目录）
+        // 等待异步CSS（如Tailwind JIT）完成渲染
+        await new Promise(resolve => setTimeout(resolve, 300));
+        // 步骤2: ✨ 双重测量，同时获取核心内容尺寸和body的padding
+        const dimensions = await page.evaluate(() => {
+            const body = document.body;
+            const contentEl = body.firstElementChild;
+            if (!contentEl)
+                return null;
+            const contentRect = contentEl.getBoundingClientRect();
+            const bodyStyle = window.getComputedStyle(body);
+            const padding = {
+                top: parseFloat(bodyStyle.paddingTop),
+                right: parseFloat(bodyStyle.paddingRight),
+                bottom: parseFloat(bodyStyle.paddingBottom),
+                left: parseFloat(bodyStyle.paddingLeft),
+            };
+            return {
+                width: contentRect.width + padding.left + padding.right,
+                height: contentRect.height + padding.top + padding.bottom
+            };
+        });
+        if (!dimensions || dimensions.width <= 0 || dimensions.height <= 0) {
+            throw new Error('Could not determine valid content dimensions. Page might be empty.');
+        }
+        // 步骤3: ✨ 将视口精确设置为"内容+画框"的完美尺寸
+        await page.setViewport({
+            width: Math.ceil(dimensions.width),
+            height: Math.ceil(dimensions.height),
+            deviceScaleFactor: 2
+        });
         const htmlDir = dirname(validatedHtmlPath);
         const htmlBasename = basename(validatedHtmlPath, extname(validatedHtmlPath));
-        const imageExtension = imageType === 'jpeg' ? 'jpg' : 'png';
+        const imageExtension = imageType === 'jpeg' ? 'jpeg' : 'png';
         const imagePath = join(htmlDir, `${htmlBasename}.${imageExtension}`);
-        // 验证图片路径安全性
         const validatedImagePath = await validatePath(imagePath, workspacePath);
-        // 截图
+        // 步骤4: ✨ 对这个完美尺寸的视口进行最终截图
         await page.screenshot({
             path: validatedImagePath,
             type: imageType,
-            fullPage: true,
-            quality: imageType === 'jpeg' ? 90 : undefined
+            quality: imageType === 'jpeg' ? 90 : undefined,
         });
         return {
             content: [{

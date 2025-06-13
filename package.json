@@ -14,8 +14,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": ["mcp", "model-context-protocol", "ai", "html", "puppeteer", "prompts", "sandbox", "security"],
-  "author": "",
+  "author": "ZhiHao",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhihao/mcp-artisan.git"
+  },
   "engines": {
     "node": ">=18.0.0"
   },
